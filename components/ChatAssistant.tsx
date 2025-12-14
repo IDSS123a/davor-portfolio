@@ -22,73 +22,71 @@ const ThumbDownIcon = ({ filled }: { filled: boolean }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg>
 );
 
-// Formatted Message Component to handle bold and lists
+// Improved Formatted Message Component
 const FormattedMessage: React.FC<{ text: string }> = ({ text }) => {
   if (!text) return null;
 
-  const lines = text.split('\n');
-  const renderedContent: React.ReactNode[] = [];
-  let listItems: React.ReactNode[] = [];
-
-  const formatLine = (content: string, keyPrefix: string) => {
+  // Helper to render bold text
+  const renderRichText = (content: string) => {
+    // Split by **text**
     const parts = content.split(/(\*\*.*?\*\*)/g);
-    return (
-      <span key={keyPrefix}>
-        {parts.map((part, idx) => {
-          if (part.startsWith('**') && part.endsWith('**')) {
-            return <strong key={`${keyPrefix}-${idx}`} className="font-bold text-theme-dark dark:text-theme-light">{part.slice(2, -2)}</strong>;
-          }
-          return part;
-        })}
-      </span>
-    );
+    return parts.map((part, index) => {
+      if (part.startsWith('**') && part.endsWith('**')) {
+        return <strong key={index} className="font-bold text-theme-dark dark:text-theme-light">{part.slice(2, -2)}</strong>;
+      }
+      return part;
+    });
   };
 
+  const lines = text.split('\n');
+  const renderedContent: React.ReactNode[] = [];
+  let currentList: React.ReactNode[] = [];
+
   lines.forEach((line, index) => {
-    const trimmedLine = line.trim();
-    
-    // Check for list item (starts with * or - followed by space)
-    const isList = /^[*-]\s/.test(trimmedLine);
-    
-    if (isList) {
-      const content = trimmedLine.replace(/^[*-]\s/, '');
-      listItems.push(
-        <li key={`li-${index}`} className="ml-4 list-disc pl-1 mb-1 marker:text-theme-accent">
-          {formatLine(content, `li-content-${index}`)}
+    const trimmed = line.trim();
+    if (!trimmed) return; // Skip empty lines
+
+    // Check for list item (starts with -, *, or •)
+    const listMatch = trimmed.match(/^[-*•]\s+(.*)/);
+
+    if (listMatch) {
+      // It's a list item
+      currentList.push(
+        <li key={`li-${index}`} className="mb-1 pl-1">
+          {renderRichText(listMatch[1])}
         </li>
       );
     } else {
-      // If we were building a list, push it now
-      if (listItems.length > 0) {
+      // Not a list item
+      // If we have an accumulated list, render it first
+      if (currentList.length > 0) {
         renderedContent.push(
-          <ul key={`ul-${index}`} className="mb-3 space-y-1 text-sm">
-            {listItems}
+          <ul key={`ul-${index}`} className="mb-3 list-disc ml-5 space-y-1 text-sm marker:text-theme-accent">
+            {currentList}
           </ul>
         );
-        listItems = [];
+        currentList = [];
       }
-
-      // Handle regular paragraph
-      if (trimmedLine.length > 0) {
-        renderedContent.push(
-          <p key={`p-${index}`} className="mb-3 last:mb-0 leading-relaxed">
-            {formatLine(trimmedLine, `p-content-${index}`)}
-          </p>
-        );
-      }
+      
+      // Render paragraph
+      renderedContent.push(
+        <p key={`p-${index}`} className="mb-3 last:mb-0 leading-relaxed text-sm">
+          {renderRichText(trimmed)}
+        </p>
+      );
     }
   });
 
-  // Flush any remaining list items
-  if (listItems.length > 0) {
+  // Flush remaining list items if any
+  if (currentList.length > 0) {
     renderedContent.push(
-      <ul key={`ul-end`} className="mb-3 space-y-1 text-sm">
-        {listItems}
+      <ul key="ul-end" className="mb-3 list-disc ml-5 space-y-1 text-sm marker:text-theme-accent">
+        {currentList}
       </ul>
     );
   }
 
-  return <div className="text-sm">{renderedContent}</div>;
+  return <div>{renderedContent}</div>;
 };
 
 const ChatAssistant: React.FC = () => {
@@ -139,7 +137,6 @@ const ChatAssistant: React.FC = () => {
   const handleFeedback = (messageId: string, type: 'up' | 'down') => {
     setMessages(prev => prev.map(msg => {
       if (msg.id === messageId) {
-        // Toggle off if clicking the same one, otherwise switch
         const newFeedback = msg.feedback === type ? undefined : type;
         return { ...msg, feedback: newFeedback };
       }
@@ -192,12 +189,11 @@ const ChatAssistant: React.FC = () => {
                       <img src={AI_LOGO_URL} alt="AI" className="w-full h-full object-cover" />
                     </div>
                   )}
-                  <div className={`max-w-[85%] rounded-2xl p-3 ${
+                  <div className={`max-w-[85%] rounded-2xl p-3 shadow-sm ${
                     msg.role === 'user' 
                       ? 'bg-theme-accent text-white rounded-tr-none' 
                       : 'bg-theme-light dark:bg-theme-dark text-theme-dark dark:text-theme-light rounded-tl-none border border-theme-accent/15'
                   }`}>
-                    {/* Use FormattedMessage for model responses, raw text for user input (usually plain) */}
                     {msg.role === 'model' ? <FormattedMessage text={msg.text} /> : <div className="text-sm">{msg.text}</div>}
                   </div>
                 </div>
@@ -224,20 +220,20 @@ const ChatAssistant: React.FC = () => {
               </div>
             ))}
             
-            {/* Improved Loading Indicator */}
+            {/* Improved "Thinking" Indicator */}
             {isLoading && (
-              <div className="flex justify-start items-end animate-pulse">
-                <div className="w-8 h-8 rounded-full bg-theme-light dark:bg-theme-dark overflow-hidden border border-theme-accent/20 mr-2 flex-shrink-0 mb-1">
-                    <img src={AI_LOGO_URL} alt="AI" className="w-full h-full object-cover grayscale opacity-70" />
-                </div>
-                <div className="bg-theme-light/50 dark:bg-theme-dark/50 rounded-2xl rounded-tl-none px-4 py-3 border border-theme-accent/15 flex items-center gap-3">
-                   <div className="flex space-x-1">
-                     <span className="w-1.5 h-1.5 bg-theme-accent rounded-full animate-bounce"></span>
-                     <span className="w-1.5 h-1.5 bg-theme-accent rounded-full animate-bounce delay-100"></span>
-                     <span className="w-1.5 h-1.5 bg-theme-accent rounded-full animate-bounce delay-200"></span>
-                   </div>
-                   <span className="text-xs text-theme-accent font-medium tracking-wide">Davor is thinking...</span>
-                </div>
+              <div className="flex justify-start w-full animate-fade-in-up">
+                 <div className="w-8 h-8 rounded-full bg-theme-light dark:bg-theme-dark overflow-hidden border border-theme-accent/20 mr-2 flex-shrink-0 self-end mb-1 opacity-70">
+                    <img src={AI_LOGO_URL} alt="AI" className="w-full h-full object-cover grayscale" />
+                 </div>
+                 <div className="bg-theme-light dark:bg-theme-dark border border-theme-accent/20 rounded-2xl rounded-tl-none px-4 py-3 shadow-sm flex items-center gap-3">
+                    <div className="flex space-x-1 h-3 items-center">
+                      <div className="w-1.5 h-1.5 bg-theme-accent rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                      <div className="w-1.5 h-1.5 bg-theme-accent rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                      <div className="w-1.5 h-1.5 bg-theme-accent rounded-full animate-bounce"></div>
+                    </div>
+                    <span className="text-xs text-theme-dark/60 dark:text-theme-light/60 font-medium">Davor is thinking...</span>
+                 </div>
               </div>
             )}
             <div ref={messagesEndRef} />

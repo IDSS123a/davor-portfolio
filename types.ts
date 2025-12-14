@@ -56,7 +56,7 @@ export type ComplexityLevel = 'Low' | 'Medium' | 'High';
 
 export interface PortfolioItem {
   id: string;
-  type: 'app' | 'prompt';
+  type: 'app' | 'prompt' | 'case-study';
   title: string;
   industry: string;
   description: string;

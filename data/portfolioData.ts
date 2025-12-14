@@ -619,3 +619,51 @@ export const PORTFOLIO_PROMPTS: PortfolioItem[] = [
     { id: 'pr39', type: 'prompt', title: "SWOT Analysis Generator", industry: "Strategy", description: "Instant business strategy.", fullDescription: "Analyzes company description for SWOT.", problem: "Lack of insight.", solution: "Strategy Prompt.", businessValue: "Clarity.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800", complexity: "High" },
     { id: 'pr40', type: 'prompt', title: "User Persona Creator", industry: "Product", description: "Fictional user profiles.", fullDescription: "Generates personas based on data.", problem: "Lack of empathy.", solution: "Creative Prompt.", businessValue: "Better products.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=800", complexity: "Medium" }
 ];
+
+export const PORTFOLIO_CASE_STUDIES: PortfolioItem[] = [
+  {
+    id: 'cs1',
+    type: 'case-study',
+    title: "AI-Driven Educational Reform",
+    industry: "Education",
+    description: "Transforming a traditional curriculum into an adaptive learning ecosystem.",
+    fullDescription: "Partnered with a leading international school network to transition from static teaching methods to an AI-powered adaptive learning model. By integrating personalized learning platforms and predictive analytics for student performance, we enabled educators to identify at-risk students 3 months earlier than before. The system tailored content delivery to individual learning speeds, resulting in higher engagement and improved test scores across key subjects.",
+    problem: "Static curriculum failed to address diverse student learning speeds and needs.",
+    solution: "Implementation of adaptive learning platforms and predictive analytics dashboards.",
+    businessValue: "Enhanced student outcomes and optimized resource allocation.",
+    technologies: ["Python", "TensorFlow", "LMS Integration", "Tableau"],
+    roi: "25% improvement in student retention",
+    implementationTime: "18 months",
+    imageUrl: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 'cs2',
+    type: 'case-study',
+    title: "Financial Compliance Automation",
+    industry: "Finance",
+    description: "Reducing audit times by 70% using NLP for document analysis.",
+    fullDescription: "Developed and deployed an NLP-based compliance engine for a regional financial institution. The system automatically scanned thousands of legal documents and transaction records to flag non-compliance risks and anomalies. This automation replaced manual sampling methods, ensuring 100% coverage of transactions and significantly reducing the legal team's workload.",
+    problem: "Manual audits were time-consuming, expensive, and prone to human error.",
+    solution: "NLP-driven document analysis and automated risk flagging system.",
+    businessValue: "Drastic reduction in legal risk and operational costs.",
+    technologies: ["BERT", "Python", "OCR", "Secure Cloud"],
+    roi: "70% reduction in audit time",
+    implementationTime: "9 months",
+    imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800"
+  },
+  {
+    id: 'cs3',
+    type: 'case-study',
+    title: "Supply Chain Resilience",
+    industry: "Logistics",
+    description: "Building a predictive digital twin to mitigate global supply chain disruptions.",
+    fullDescription: "Created a digital twin simulation for a manufacturing holding to stress-test their supply chain against various disruption scenarios. The system used real-time data feeds to predict bottlenecks and suggest alternative suppliers or routes. This proactive approach allowed the company to maintain production levels during global shortages when competitors faced shutdowns.",
+    problem: "Vulnerability to global supply chain shocks and lack of visibility.",
+    solution: "Predictive digital twin with real-time scenario modeling.",
+    businessValue: "Uninterrupted production and competitive advantage during crises.",
+    technologies: ["Azure Digital Twins", "Simulation Modeling", "PowerBI"],
+    roi: "Avoided €2M in potential downtime",
+    implementationTime: "12 months",
+    imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800"
+  }
+];

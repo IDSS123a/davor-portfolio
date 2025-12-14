@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -8,9 +7,12 @@ import Volunteering from './components/Volunteering';
 import Testimonials from './components/Testimonials';
 import ChatAssistant from './components/ChatAssistant';
 import Portfolio from './components/Portfolio'; // New Import
+import CVRequestModal from './components/CVRequestModal';
 import { BOOKS, BOOK_SUBMISSION_URL, PROFILE } from './constants';
 
 const App: React.FC = () => {
+  const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+
   return (
     <div className="bg-theme-light dark:bg-theme-dark min-h-screen relative transition-colors duration-300">
       <Navbar />
@@ -183,7 +185,12 @@ const App: React.FC = () => {
                  <span className="hidden md:inline w-px h-4 bg-theme-accent/30"></span>
                  <div className="flex gap-6">
                     <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer" className="hover:text-theme-accent transition-colors">Connect</a>
-                    <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer" className="hover:text-theme-accent transition-colors">Download CV</a>
+                    <button 
+                      onClick={() => setIsCVModalOpen(true)}
+                      className="hover:text-theme-accent transition-colors"
+                    >
+                      Download CV
+                    </button>
                  </div>
               </div>
 
@@ -195,6 +202,7 @@ const App: React.FC = () => {
       </main>
 
       <ChatAssistant />
+      <CVRequestModal isOpen={isCVModalOpen} onClose={() => setIsCVModalOpen(false)} />
     </div>
   );
 };

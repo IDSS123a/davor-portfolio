@@ -1,17 +1,17 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
-import { PORTFOLIO_APPS, PORTFOLIO_PROMPTS } from '../data/portfolioData';
+import { PORTFOLIO_APPS, PORTFOLIO_PROMPTS, PORTFOLIO_CASE_STUDIES } from '../data/portfolioData';
 import { PortfolioItem } from '../types';
 
 const Portfolio: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'apps' | 'prompts'>('apps');
+  const [activeTab, setActiveTab] = useState<'apps' | 'prompts' | 'case-studies'>('apps');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndustry, setSelectedIndustry] = useState('All');
   const [selectedTech, setSelectedTech] = useState('All');
   const [visibleCount, setVisibleCount] = useState(8);
   const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(null);
 
-  const data = activeTab === 'apps' ? PORTFOLIO_APPS : PORTFOLIO_PROMPTS;
+  const data = activeTab === 'apps' ? PORTFOLIO_APPS : activeTab === 'prompts' ? PORTFOLIO_PROMPTS : PORTFOLIO_CASE_STUDIES;
 
   const industries = ['All', ...Array.from(new Set(data.map(item => item.industry))).sort()];
   const technologies = ['All', ...Array.from(new Set(data.flatMap(item => item.technologies))).sort()];
@@ -42,7 +42,7 @@ const Portfolio: React.FC = () => {
            <span className="text-theme-accent font-bold tracking-widest uppercase text-sm">World-Class Portfolio</span>
            <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-dark dark:text-theme-light mt-2">AI Solutions & Innovations</h2>
            <p className="text-theme-dark/70 dark:text-theme-light/70 mt-4 max-w-2xl mx-auto">
-             Explore 60+ real-world AI implementations across 30 industries. From full-scale web applications to high-impact prompt engineering solutions.
+             Explore 60+ real-world AI implementations across 30 industries. From full-scale web applications to high-impact prompt engineering solutions and strategic case studies.
            </p>
         </div>
 
@@ -51,18 +51,24 @@ const Portfolio: React.FC = () => {
           
           {/* Tabs */}
           <div className="flex justify-center">
-            <div className="bg-theme-light dark:bg-theme-dark border border-theme-accent/20 p-1 rounded-xl inline-flex shadow-lg">
+            <div className="bg-theme-light dark:bg-theme-dark border border-theme-accent/20 p-1 rounded-xl inline-flex shadow-lg flex-wrap justify-center">
               <button 
                 onClick={() => setActiveTab('apps')}
-                className={`px-8 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${activeTab === 'apps' ? 'bg-theme-accent text-white shadow-md' : 'text-theme-dark/70 dark:text-theme-light/70 hover:bg-theme-accent/5'}`}
+                className={`px-6 md:px-8 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${activeTab === 'apps' ? 'bg-theme-accent text-white shadow-md' : 'text-theme-dark/70 dark:text-theme-light/70 hover:bg-theme-accent/5'}`}
               >
                 AI Web Apps ({PORTFOLIO_APPS.length})
               </button>
               <button 
                 onClick={() => setActiveTab('prompts')}
-                className={`px-8 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${activeTab === 'prompts' ? 'bg-theme-accent text-white shadow-md' : 'text-theme-dark/70 dark:text-theme-light/70 hover:bg-theme-accent/5'}`}
+                className={`px-6 md:px-8 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${activeTab === 'prompts' ? 'bg-theme-accent text-white shadow-md' : 'text-theme-dark/70 dark:text-theme-light/70 hover:bg-theme-accent/5'}`}
               >
                 AI Prompt Solutions ({PORTFOLIO_PROMPTS.length})
+              </button>
+              <button 
+                onClick={() => setActiveTab('case-studies')}
+                className={`px-6 md:px-8 py-3 rounded-lg text-sm font-bold transition-all duration-300 ${activeTab === 'case-studies' ? 'bg-theme-accent text-white shadow-md' : 'text-theme-dark/70 dark:text-theme-light/70 hover:bg-theme-accent/5'}`}
+              >
+                Case Studies ({PORTFOLIO_CASE_STUDIES.length})
               </button>
             </div>
           </div>
