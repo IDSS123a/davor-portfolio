@@ -34,6 +34,7 @@ export interface ChatMessage {
   role: 'user' | 'model';
   text: string;
   isThinking?: boolean;
+  isError?: boolean;
   feedback?: 'up' | 'down';
 }
 

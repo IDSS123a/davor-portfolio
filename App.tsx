@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -12,6 +13,15 @@ import { BOOKS, BOOK_SUBMISSION_URL, PROFILE } from './constants';
 
 const App: React.FC = () => {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+
+  // Helper for smooth scrolling from Footer
+  const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="bg-theme-light dark:bg-theme-dark min-h-screen relative transition-colors duration-300">
@@ -175,12 +185,12 @@ const App: React.FC = () => {
               
               <div className="flex flex-col md:flex-row gap-6 text-sm font-medium text-theme-dark/70 dark:text-theme-light/70 items-center">
                  <div className="flex gap-6">
-                    <a href="#about" className="hover:text-theme-accent transition-colors">About</a>
-                    <a href="#experience" className="hover:text-theme-accent transition-colors">Experience</a>
-                    <a href="#books" className="hover:text-theme-accent transition-colors">Books</a>
-                    <a href="#portfolio" className="hover:text-theme-accent transition-colors">Portfolio</a>
-                    <a href="#volunteering" className="hover:text-theme-accent transition-colors">Volunteering</a>
-                    <a href="#contact" className="hover:text-theme-accent transition-colors">Contact</a>
+                    <a href="#about" onClick={(e) => smoothScroll(e, 'about')} className="hover:text-theme-accent transition-colors">About</a>
+                    <a href="#experience" onClick={(e) => smoothScroll(e, 'experience')} className="hover:text-theme-accent transition-colors">Experience</a>
+                    <a href="#books" onClick={(e) => smoothScroll(e, 'books')} className="hover:text-theme-accent transition-colors">Books</a>
+                    <a href="#portfolio" onClick={(e) => smoothScroll(e, 'portfolio')} className="hover:text-theme-accent transition-colors">Portfolio</a>
+                    <a href="#volunteering" onClick={(e) => smoothScroll(e, 'volunteering')} className="hover:text-theme-accent transition-colors">Volunteering</a>
+                    <a href="#contact" onClick={(e) => smoothScroll(e, 'contact')} className="hover:text-theme-accent transition-colors">Contact</a>
                  </div>
                  <span className="hidden md:inline w-px h-4 bg-theme-accent/30"></span>
                  <div className="flex gap-6">

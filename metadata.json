@@ -1,5 +1,7 @@
 {
   "name": "Davor Mulalić - AI Education Leader",
   "description": "A world-class professional portfolio for Davor Mulalić, featuring an AI-powered interactive assistant.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [
+    "microphone"
+  ]
 }

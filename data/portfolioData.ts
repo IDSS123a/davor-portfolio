@@ -2,7 +2,7 @@
 import { PortfolioItem } from '../types';
 
 export const PORTFOLIO_APPS: PortfolioItem[] = [
-  // --- NEW REQUESTED APPS (16 items) ---
+  // --- NEW REQUESTED APPS ---
   {
     id: 'app_school_hub',
     type: 'app',
@@ -16,7 +16,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["React", "Node.js", "OpenAI API", "Firebase"],
     roi: "40% reduction in admin workload",
     implementationTime: "4 months",
-    imageUrl: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: 'app_freight_master',
@@ -31,7 +31,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["Python", "TensorFlow", "Google Maps API", "Docker"],
     roi: "15% logistics cost reduction",
     implementationTime: "6 months",
-    imageUrl: "https://images.unsplash.com/photo-1494412574643-35d324688188?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: 'app_logistic_master',
@@ -46,7 +46,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["Azure Digital Twins", "PowerBI", "Python"],
     roi: "20% efficiency gain",
     implementationTime: "8 months",
-    imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.pexels.com/photos/163726/belgium-antwerp-shipping-container-163726.jpeg" // UPDATED Pexels
   },
   {
     id: 'app_c_level_autopilot',
@@ -61,7 +61,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["GPT-4", "Tableau API", "Python", "Secure Vault"],
     roi: "10h/week saved per executive",
     implementationTime: "3 months",
-    imageUrl: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: 'app_due_diligence',
@@ -76,7 +76,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["OCR", "NLP (BERT)", "React", "AWS Comprehend"],
     roi: "70% faster analysis time",
     implementationTime: "5 months",
-    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: 'app_homework_helper',
@@ -121,7 +121,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["Dialogflow", "React", "Node.js"],
     roi: "60% reduction in phone inquiries",
     implementationTime: "6 weeks",
-    imageUrl: "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: 'app_trip_advisor',
@@ -181,7 +181,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["PowerBI", "Python", "SQL", "Azure"],
     roi: "Instant operational visibility",
     implementationTime: "3 months",
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: 'app_business_assistant',
@@ -226,7 +226,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["GPT-4", "Canva API", "Next.js"],
     roi: "10x content output",
     implementationTime: "2 months",
-    imageUrl: "https://images.unsplash.com/photo-1499750310159-529800cf2c5a?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.pexels.com/photos/14924590/pexels-photo-14924590.jpeg" // UPDATED Pexels
   },
   {
     id: 'app_speech_master',
@@ -241,10 +241,25 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["Whisper AI", "NLP", "React Native"],
     roi: "Improved leadership communication",
     implementationTime: "3 months",
-    imageUrl: "https://images.unsplash.com/photo-1475721027767-p429c6170736?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.pexels.com/photos/270288/pexels-photo-270288.jpeg" // UPDATED Pexels
+  },
+  {
+    id: 'app19',
+    type: 'app',
+    title: "E-commerce Recommender",
+    industry: "E-commerce",
+    description: "Personalized product bundles for checkout.",
+    fullDescription: "Collaborative filtering engine that suggests 'frequently bought together' items to increase basket size.",
+    problem: "Low average order value.",
+    solution: "Recommendation Engine.",
+    businessValue: "Increased AOV.",
+    technologies: ["Python", "Redis", "Shopify API"],
+    roi: "12% revenue lift",
+    implementationTime: "6 weeks",
+    imageUrl: "https://images.pexels.com/photos/4482900/pexels-photo-4482900.jpeg" // UPDATED Pexels
   },
 
-  // --- ORIGINAL 20 APPS (Restored & Optimized) ---
+  // --- RESTORED APPS ---
   {
     id: 'app1',
     type: 'app',
@@ -288,7 +303,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["Python", "XGBoost", "FastAPI", "Docker"],
     roi: "320% faster processing",
     implementationTime: "6 months",
-    imageUrl: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.pexels.com/photos/5816299/pexels-photo-5816299.jpeg" // UPDATED Pexels
   },
   {
     id: 'app4',
@@ -363,7 +378,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     technologies: ["Google Document AI", "Python", "QuickBooks API"],
     roi: "Save 40 hours/week",
     implementationTime: "6 weeks",
-    imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800"
+    imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800"
   },
   {
     id: 'app9',
@@ -425,7 +440,6 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     implementationTime: "4 months",
     imageUrl: "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?auto=format&fit=crop&q=80&w=800"
   },
-  // --- REPLACED IMAGES FOR THE PROBLEM 8 APPS BELOW ---
   {
     id: 'app13',
     type: 'app',
@@ -517,21 +531,6 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
     imageUrl: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800"
   },
   {
-    id: 'app19',
-    type: 'app',
-    title: "E-commerce Recommender",
-    industry: "E-commerce",
-    description: "Personalized product bundles for checkout.",
-    fullDescription: "Collaborative filtering engine that suggests 'frequently bought together' items to increase basket size.",
-    problem: "Low average order value.",
-    solution: "Recommendation Engine.",
-    businessValue: "Increased AOV.",
-    technologies: ["Python", "Redis", "Shopify API"],
-    roi: "12% revenue lift",
-    implementationTime: "6 weeks",
-    imageUrl: "https://images.unsplash.com/photo-1472851294608-415522f83ac1?auto=format&fit=crop&q=80&w=800"
-  },
-  {
     id: 'app20',
     type: 'app',
     title: "Telecom Churn Buster",
@@ -550,7 +549,7 @@ export const PORTFOLIO_APPS: PortfolioItem[] = [
 
 export const PORTFOLIO_PROMPTS: PortfolioItem[] = [
     // BATCH 1: SALES & MARKETING
-    { id: 'pr1', type: 'prompt', title: "Cold Email Generator", industry: "Sales", description: "Hyper-personalized outreach.", fullDescription: "Generates tailored cold emails analyzing prospect's LinkedIn profile.", problem: "Generic emails get ignored.", solution: "GPT-4 Persona Prompt.", businessValue: "3x reply rate.", technologies: ["ChatGPT", "LinkedIn"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&q=80&w=800", complexity: "Low" },
+    { id: 'pr1', type: 'prompt', title: "Cold Email Generator", industry: "Sales", description: "Hyper-personalized outreach.", fullDescription: "Generates tailored cold emails analyzing prospect's LinkedIn profile.", problem: "Generic emails get ignored.", solution: "GPT-4 Persona Prompt.", businessValue: "3x reply rate.", technologies: ["ChatGPT", "LinkedIn"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800", complexity: "Low" },
     { id: 'pr2', type: 'prompt', title: "Objection Handler", industry: "Sales", description: "Real-time scripts for overcoming 'No'.", fullDescription: "Provides psychological counters to common sales objections.", problem: "Sales reps freeze under pressure.", solution: "Chain-of-Thought Prompt.", businessValue: "Higher close rate.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
     { id: 'pr3', type: 'prompt', title: "SEO Blog Post Writer", industry: "Media", description: "SEO-optimized long-form content.", fullDescription: "Creates 2000-word articles with keyword integration.", problem: "Content creation is slow.", solution: "Structured Output Prompt.", businessValue: "Traffic growth.", technologies: ["Claude 3"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
     { id: 'pr4', type: 'prompt', title: "Social Media Calendar", industry: "Media", description: "30-day content plan generation.", fullDescription: "Generates posts for LI, Twitter, IG based on brand voice.", problem: "Inconsistent posting.", solution: "Table Format Prompt.", businessValue: "Brand awareness.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=800", complexity: "Low" },
@@ -562,12 +561,13 @@ export const PORTFOLIO_PROMPTS: PortfolioItem[] = [
     { id: 'pr8', type: 'prompt', title: "Conflict Resolution Script", industry: "Management", description: "Mediating team disputes.", fullDescription: "Scripts for de-escalating workplace tension.", problem: "Toxic culture.", solution: "NVC (Non-Violent Communication) Prompt.", businessValue: "Team cohesion.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800", complexity: "High" },
 
     // BATCH 3: SUPPLY CHAIN & LOGISTICS
-    { id: 'pr9', type: 'prompt', title: "Supplier Negotiation Script", industry: "Supply Chain", description: "Scripts to negotiate better rates.", fullDescription: "Simulates negotiation scenarios to lower COGS.", problem: "High procurement costs.", solution: "Simulation Prompt.", businessValue: "Cost savings.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800", complexity: "High" },
+    { id: 'pr9', type: 'prompt', title: "Supplier Negotiation Script", industry: "Supply Chain", description: "Scripts to negotiate better rates.", fullDescription: "Simulates negotiation scenarios to lower COGS.", problem: "High procurement costs.", solution: "Simulation Prompt.", businessValue: "Cost savings.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.pexels.com/photos/6773517/pexels-photo-6773517.jpeg" // UPDATED Pexels
+    },
     { id: 'pr10', type: 'prompt', title: "Inventory Risk Analyzer", industry: "Supply Chain", description: "Identify stockout risks.", fullDescription: "Analyzes lead times vs stock levels textually.", problem: "Stockouts.", solution: "Analysis Prompt.", businessValue: "Continuity.", technologies: ["Claude 3"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
     
     // BATCH 4: FINANCE & LEGAL
     { id: 'pr11', type: 'prompt', title: "Contract Summarizer", industry: "Legal", description: "ELI5 for complex contracts.", fullDescription: "Breaks down legalese into plain English.", problem: "Confusion.", solution: "Translation Prompt.", businessValue: "Speed.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
-    { id: 'pr12', type: 'prompt', title: "Financial Ratio Analyzer", industry: "Finance", description: "Interprets balance sheets.", fullDescription: "Explains liquidity and solvency based on input numbers.", problem: "Data overload.", solution: "Analysis Prompt.", businessValue: "Better investment.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800", complexity: "High" },
+    { id: 'pr12', type: 'prompt', title: "Financial Ratio Analyzer", industry: "Finance", description: "Interprets balance sheets.", fullDescription: "Explains liquidity and solvency based on input numbers.", problem: "Data overload.", solution: "Analysis Prompt.", businessValue: "Better investment.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800", complexity: "High" },
     { id: 'pr13', type: 'prompt', title: "Tax Deduction Finder", industry: "Finance", description: "Identifies potential write-offs.", fullDescription: "Suggests deductible expenses based on industry.", problem: "Overpayment.", solution: "Ideation Prompt.", businessValue: "Savings.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1586486855514-8c633cc6fd38?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
 
     // BATCH 5: HEALTHCARE & PHARMA
@@ -576,7 +576,7 @@ export const PORTFOLIO_PROMPTS: PortfolioItem[] = [
 
     // BATCH 6: REAL ESTATE & CONSTRUCTION
     { id: 'pr16', type: 'prompt', title: "Property Description Writer", industry: "Real Estate", description: "Captivating listing copy.", fullDescription: "Writes listings that sell the 'dream'.", problem: "Boring listings.", solution: "Creative Writing Prompt.", businessValue: "More clicks.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800", complexity: "Low" },
-    { id: 'pr17', type: 'prompt', title: "Construction Safety Checklist", industry: "Construction", description: "Daily site-specific lists.", fullDescription: "Generates safety checks based on weather/phase.", problem: "Accidents.", solution: "Checklist Prompt.", businessValue: "Safety.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
+    { id: 'pr17', type: 'prompt', title: "Construction Safety Checklist", industry: "Construction", description: "Daily site-specific lists.", fullDescription: "Generates safety checks based on weather/phase.", problem: "Accidents.", solution: "Checklist Prompt.", businessValue: "Safety.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
 
     // BATCH 7: EDUCATION
     { id: 'pr18', type: 'prompt', title: "Lesson Plan Creator", industry: "Education", description: "Full curriculum generation.", fullDescription: "Creates objectives, activities, and assessments.", problem: "Planning time.", solution: "Structure Prompt.", businessValue: "Teacher focus.", technologies: ["Claude 3"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
@@ -584,7 +584,8 @@ export const PORTFOLIO_PROMPTS: PortfolioItem[] = [
     { id: 'pr20', type: 'prompt', title: "Rubric Builder", industry: "Education", description: "Grading criteria maker.", fullDescription: "Creates detailed grading rubrics.", problem: "Subjectivity.", solution: "Standardization Prompt.", businessValue: "Fairness.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
 
     // BATCH 8: RETAIL & E-COMMERCE
-    { id: 'pr21', type: 'prompt', title: "Product Description SEO", industry: "E-commerce", description: "SEO optimized product text.", fullDescription: "Writes descriptions that rank and convert.", problem: "Low traffic.", solution: "SEO Prompt.", businessValue: "Sales.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1556740758-90de27424702?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
+    { id: 'pr21', type: 'prompt', title: "Product Description SEO", industry: "E-commerce", description: "SEO optimized product text.", fullDescription: "Writes descriptions that rank and convert.", problem: "Low traffic.", solution: "SEO Prompt.", businessValue: "Sales.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.pexels.com/photos/7213435/pexels-photo-7213435.jpeg" // UPDATED Pexels
+    },
     { id: 'pr22', type: 'prompt', title: "Customer Support Response", industry: "Retail", description: "Empathetic reply generator.", fullDescription: "Drafts responses to angry reviews.", problem: "Brand damage.", solution: "Tone Shift Prompt.", businessValue: "Reputation.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800", complexity: "Low" },
 
     // BATCH 9: IT & SECURITY
@@ -594,10 +595,12 @@ export const PORTFOLIO_PROMPTS: PortfolioItem[] = [
 
     // BATCH 10: AUTOMOTIVE & ENERGY
     { id: 'pr26', type: 'prompt', title: "EV Charging Advisor", industry: "Automotive", description: "Explains charging to new owners.", fullDescription: "Simplifies technical charging info.", problem: "Consumer confusion.", solution: "Education Prompt.", businessValue: "Adoption.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=800", complexity: "Low" },
-    { id: 'pr27', type: 'prompt', title: "Energy Saving Tips", industry: "Energy", description: "Customized home audit.", fullDescription: "Suggests savings based on home usage.", problem: "High bills.", solution: "Audit Prompt.", businessValue: "Conservation.", technologies: ["ChatGPT"], roi: "Low", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1473341304170-5799a2265881?auto=format&fit=crop&q=80&w=800", complexity: "Low" },
+    { id: 'pr27', type: 'prompt', title: "Energy Saving Tips", industry: "Energy", description: "Customized home audit.", fullDescription: "Suggests savings based on home usage.", problem: "High bills.", solution: "Audit Prompt.", businessValue: "Conservation.", technologies: ["ChatGPT"], roi: "Low", implementationTime: "Instant", imageUrl: "https://images.pexels.com/photos/390426/pexels-photo-390426.png" // UPDATED Pexels
+    },
 
     // BATCH 11: AGRICULTURE & FOOD
-    { id: 'pr28', type: 'prompt', title: "Crop Rotation Planner", industry: "Agriculture", description: "Optimizes soil health.", fullDescription: "Suggests rotation schedules.", problem: "Soil depletion.", solution: "Planning Prompt.", businessValue: "Yield.", technologies: ["Claude 3"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1625246333195-f8196812c850?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
+    { id: 'pr28', type: 'prompt', title: "Crop Rotation Planner", industry: "Agriculture", description: "Optimizes soil health.", fullDescription: "Suggests rotation schedules.", problem: "Soil depletion.", solution: "Planning Prompt.", businessValue: "Yield.", technologies: ["Claude 3"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.pexels.com/photos/20286959/pexels-photo-20286959.jpeg" // UPDATED Pexels
+    },
     { id: 'pr29', type: 'prompt', title: "Menu Engineering", industry: "Food Service", description: "Optimizes menu for profit.", fullDescription: "Suggests layout and descriptions.", problem: "Low margin.", solution: "Psychology Prompt.", businessValue: "Profit.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
 
     // BATCH 12: TRAVEL & NONPROFIT
@@ -609,11 +612,13 @@ export const PORTFOLIO_PROMPTS: PortfolioItem[] = [
     { id: 'pr33', type: 'prompt', title: "Book Chapter Outliner", industry: "Publishing", description: "Structures novels.", fullDescription: "Beats and pacing for authors.", problem: "Writer's block.", solution: "Structure Prompt.", businessValue: "Completion.", technologies: ["Claude 3"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
 
     // BATCH 14: GOVERNMENT & TELECOM
-    { id: 'pr34', type: 'prompt', title: "Policy Simplifier", industry: "Government", description: "Makes laws readable.", fullDescription: "Summarizes policy for citizens.", problem: "Opaque govt.", solution: "Summary Prompt.", businessValue: "Civic engagement.", technologies: ["Claude 3"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1541872703-74c59636a226?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
+    { id: 'pr34', type: 'prompt', title: "Policy Simplifier", industry: "Government", description: "Makes laws readable.", fullDescription: "Summarizes policy for citizens.", problem: "Opaque govt.", solution: "Summary Prompt.", businessValue: "Civic engagement.", technologies: ["Claude 3"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.pexels.com/photos/8413176/pexels-photo-8413176.jpeg" // UPDATED Pexels
+    },
     { id: 'pr35', type: 'prompt', title: "Data Plan Recommender", industry: "Telecom", description: "Matches usage to plan.", fullDescription: "Analyzes usage history.", problem: "Overpaying.", solution: "Analysis Prompt.", businessValue: "Trust.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800", complexity: "Low" },
 
     // BATCH 15: MISC
-    { id: 'pr36', type: 'prompt', title: "Excel Formula Generator", industry: "Admin", description: "Complex formula helper.", fullDescription: "Writes Excel/Sheets formulas from text.", problem: "Skill gap.", solution: "Code Prompt.", businessValue: "Efficiency.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1543286386-2f6595e96e6b?auto=format&fit=crop&q=80&w=800", complexity: "Medium" },
+    { id: 'pr36', type: 'prompt', title: "Excel Formula Generator", industry: "Admin", description: "Complex formula helper.", fullDescription: "Writes Excel/Sheets formulas from text.", problem: "Skill gap.", solution: "Code Prompt.", businessValue: "Efficiency.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.pexels.com/photos/3729557/pexels-photo-3729557.jpeg" // UPDATED Pexels
+    },
     { id: 'pr37', type: 'prompt', title: "Presentation Slide Outliner", industry: "Sales", description: "Deck structure.", fullDescription: "Bullet points for slides.", problem: "Bad decks.", solution: "Structure Prompt.", businessValue: "Persuasion.", technologies: ["ChatGPT"], roi: "Medium", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800", complexity: "Low" },
     { id: 'pr38', type: 'prompt', title: "Email Subject Line Tester", industry: "Marketing", description: "A/B test variations.", fullDescription: "Generates 10 hooks.", problem: "Low open rates.", solution: "Copywriting Prompt.", businessValue: "Opens.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&q=80&w=800", complexity: "Low" },
     { id: 'pr39', type: 'prompt', title: "SWOT Analysis Generator", industry: "Strategy", description: "Instant business strategy.", fullDescription: "Analyzes company description for SWOT.", problem: "Lack of insight.", solution: "Strategy Prompt.", businessValue: "Clarity.", technologies: ["ChatGPT"], roi: "High", implementationTime: "Instant", imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800", complexity: "High" },

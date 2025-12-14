@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { VOLUNTEERING } from '../constants';
 
@@ -5,13 +6,15 @@ const Volunteering: React.FC = () => {
   return (
     <section id="volunteering" className="py-24 bg-theme-light/50 dark:bg-theme-dark/50 relative">
       <div className="w-full px-6 md:px-12 lg:px-24">
-        <div className="mb-12">
-           <div className="flex items-center gap-4 mb-4">
+        {/* Centered Header */}
+        <div className="mb-12 text-center max-w-4xl mx-auto">
+           <div className="flex items-center justify-center gap-4 mb-4">
              <div className="h-px bg-theme-accent w-12"></div>
              <span className="text-theme-accent font-bold tracking-widest uppercase text-sm">Giving Back</span>
+             <div className="h-px bg-theme-accent w-12"></div>
            </div>
            <h2 className="text-3xl md:text-5xl font-serif font-bold text-theme-dark dark:text-theme-light">Volunteering & Leadership</h2>
-           <p className="text-theme-dark/70 dark:text-theme-light/70 mt-4 max-w-2xl">
+           <p className="text-theme-dark/70 dark:text-theme-light/70 mt-4 max-w-2xl mx-auto">
              Beyond the boardroom, I believe that empathy, meaningful relationships, and giving back to the community are essential for lasting professional and personal success.
            </p>
         </div>
