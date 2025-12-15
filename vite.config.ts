@@ -1,23 +1,24 @@
-import path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, '.', '');
-    return {
-      server: {
-        port: 3000,
-        host: '0.0.0.0',
-      },
-      plugins: [react()],
-      define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
-      resolve: {
-        alias: {
-          '@': path.resolve(__dirname, '.'),
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  build: {
+    // We treat these libraries as external because they are loaded via 
+    // <script type="importmap"> in index.html from esm.sh CDN.
+    // This keeps the build fast and prevents "module not found" errors on Vercel.
+    rollupOptions: {
+      external: ['react', 'react-dom', 'react-dom/client', '@google/genai'],
+      output: {
+        format: 'es',
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          '@google/genai': 'GoogleGenAI'
         }
       }
-    };
+    }
+  }
 });
