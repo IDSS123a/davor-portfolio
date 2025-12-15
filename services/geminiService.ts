@@ -97,6 +97,6 @@ export const sendMessageToGemini = async (message: string): Promise<string> => {
     return result.text || "I apologize, I couldn't generate a response at this moment. Please try again.";
   } catch (error) {
     console.error("Error sending message to Gemini:", error);
-    return "I'm currently experiencing high traffic. Please try asking about Davor again in a moment, or use the Contact section.";
+    return "I apologize, I encountered an error. Please try again later.";
   }
 };
