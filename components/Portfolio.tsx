@@ -8,7 +8,11 @@ const Portfolio: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedIndustry, setSelectedIndustry] = useState('All');
   const [selectedTech, setSelectedTech] = useState('All');
-  const [visibleCount, setVisibleCount] = useState(8);
+  
+  // Dynamic page size based on tab type
+  const getPageSize = (tab: string) => tab === 'case-studies' ? 4 : 8;
+  const [visibleCount, setVisibleCount] = useState(getPageSize('apps'));
+  
   const [selectedProject, setSelectedProject] = useState<PortfolioItem | null>(null);
 
   const data = activeTab === 'apps' ? PORTFOLIO_APPS : activeTab === 'prompts' ? PORTFOLIO_PROMPTS : PORTFOLIO_CASE_STUDIES;
@@ -16,9 +20,9 @@ const Portfolio: React.FC = () => {
   const industries = ['All', ...Array.from(new Set(data.map(item => item.industry))).sort()];
   const technologies = ['All', ...Array.from(new Set(data.flatMap(item => item.technologies))).sort()];
 
-  // Reset pagination when filters change
+  // Reset pagination when filters change or tab changes
   useEffect(() => {
-    setVisibleCount(8);
+    setVisibleCount(getPageSize(activeTab));
   }, [activeTab, searchQuery, selectedIndustry, selectedTech]);
 
   const filteredData = useMemo(() => {
@@ -32,6 +36,17 @@ const Portfolio: React.FC = () => {
   }, [data, searchQuery, selectedIndustry, selectedTech]);
 
   const visibleData = filteredData.slice(0, visibleCount);
+
+  const handleLoadMore = () => {
+    setVisibleCount(prev => prev + getPageSize(activeTab));
+  };
+
+  const handleCardKeyDown = (e: React.KeyboardEvent, item: PortfolioItem) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      setSelectedProject(item);
+    }
+  };
 
   return (
     <section id="portfolio" className="py-24 bg-theme-light dark:bg-theme-dark relative">
@@ -136,7 +151,10 @@ const Portfolio: React.FC = () => {
              <div 
                key={item.id} 
                onClick={() => setSelectedProject(item)}
-               className="group bg-theme-light dark:bg-theme-dark border border-theme-accent/15 rounded-2xl overflow-hidden hover:border-theme-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-theme-accent/10 cursor-pointer flex flex-col h-full"
+               onKeyDown={(e) => handleCardKeyDown(e, item)}
+               role="button"
+               tabIndex={0}
+               className="group bg-theme-light dark:bg-theme-dark border border-theme-accent/15 rounded-2xl overflow-hidden hover:border-theme-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-theme-accent/10 cursor-pointer flex flex-col h-full outline-none focus:ring-2 focus:ring-theme-accent"
              >
                 {/* Image Area */}
                 <div className="relative h-48 overflow-hidden">
@@ -196,7 +214,7 @@ const Portfolio: React.FC = () => {
         {visibleData.length < filteredData.length && (
           <div className="mt-16 text-center">
              <button 
-               onClick={() => setVisibleCount(prev => prev + 8)}
+               onClick={handleLoadMore}
                className="group relative px-8 py-3 bg-transparent border border-theme-accent/30 text-theme-dark dark:text-theme-light font-bold rounded-full hover:border-theme-accent hover:text-theme-accent transition-all overflow-hidden"
              >
                 <span className="relative z-10 flex items-center gap-2">

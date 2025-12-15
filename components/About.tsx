@@ -14,7 +14,7 @@ const About: React.FC = () => {
           observer.disconnect(); // Animate only once
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.2 }
     );
 
     if (sectionRef.current) {
@@ -48,20 +48,20 @@ const About: React.FC = () => {
       <div className="w-full px-6 md:px-12 lg:px-24">
         
         {/* Header */}
-        <div className="mb-12">
+        <div className={`mb-12 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <span className="text-theme-accent font-bold tracking-widest uppercase text-sm">About Me</span>
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-theme-dark dark:text-theme-light mt-2 mb-4">Executive Leader & AI Strategist</h2>
           <p className="text-xl text-theme-dark/70 dark:text-theme-light/70 font-light max-w-4xl">Driving sustainable growth through strategic vision and innovative leadership</p>
-          <div className="h-1 w-20 bg-theme-accent mt-8"></div>
+          <div className={`h-1 w-20 bg-theme-accent mt-8 transition-all duration-1000 delay-300 ${isVisible ? 'w-20 opacity-100' : 'w-0 opacity-0'}`}></div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
           {/* Left Column: Bio & Workbook */}
           <div className="space-y-8">
-            <div className="text-lg text-theme-dark/70 dark:text-theme-light/70 space-y-6 leading-relaxed">
+            <div className={`text-lg text-theme-dark/70 dark:text-theme-light/70 space-y-6 leading-relaxed transition-all duration-1000 delay-200 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <p>
-                Executive Leader and expert in AI Strategy and Digital Transformation with over 25 years of experience driving growth, innovation, and operational excellence across multiple industries. In my roles as CEO and Managing Director, I have a proven track record of delivering strong financial results, including a €16M (33%) increase in operating income and a 90% boost in revenue.
+                Executive Leader and expert in AI Strategy and Digital Transformation with over 25 years of experience driving growth, innovation, and operational excellence. In my roles as CEO and Managing Director, I have a proven track record of delivering strong financial results, including a €16M (33%) increase in operating income and a 90% boost in revenue.
               </p>
               <p>
                 Leveraging my deep understanding of business needs and emerging technologies, I bridge traditional leadership with AI-powered solutions, creating strategic roadmaps, implementing no-code AI tools, and enabling data-driven decision-making that accelerates sustainable growth.
@@ -75,7 +75,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Workbook Card */}
-            <div className="mt-8 p-8 bg-theme-accent/5 border border-theme-accent/20 rounded-2xl relative overflow-hidden group shadow-lg">
+            <div className={`mt-8 p-8 bg-theme-accent/5 border border-theme-accent/20 rounded-2xl relative overflow-hidden group shadow-lg transition-all duration-1000 delay-300 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                <div className="absolute top-0 right-0 w-40 h-40 bg-theme-accent/10 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
                <h3 className="text-xl font-bold text-theme-dark dark:text-theme-light mb-1 flex items-center gap-2">
                  <span className="text-2xl">📘</span> Upcoming Workbook
@@ -111,10 +111,10 @@ const About: React.FC = () => {
           {/* Right Column: Images, Stats, Details */}
           <div className="space-y-12">
              
-             {/* Images with Parallax/Zoom */}
+             {/* Images with Parallax/Zoom - STAGGERED ENTRANCE */}
              <div className="grid grid-cols-2 gap-4">
                  {/* Image 1 */}
-                 <div className={`space-y-3 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+                 <div className={`space-y-3 transition-all duration-1000 delay-300 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
                     <div className="relative rounded-2xl overflow-hidden shadow-2xl group h-56 md:h-64 border border-theme-accent/15">
                       <div className="absolute inset-0 bg-theme-accent/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                       <img 
@@ -127,7 +127,7 @@ const About: React.FC = () => {
                  </div>
 
                  {/* Image 2 */}
-                 <div className={`space-y-3 transition-all duration-1000 delay-200 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+                 <div className={`space-y-3 transition-all duration-1000 delay-500 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
                     <div className="relative rounded-2xl overflow-hidden shadow-2xl group h-56 md:h-64 border border-theme-accent/15">
                       <div className="absolute inset-0 bg-theme-accent/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
                       <img 
@@ -140,8 +140,8 @@ const About: React.FC = () => {
                  </div>
              </div>
 
-             {/* Award Badge */}
-             <div className="bg-theme-light/50 dark:bg-theme-dark/50 border border-theme-accent/20 p-6 rounded-xl flex items-center gap-4 backdrop-blur-sm shadow-xl relative overflow-hidden">
+             {/* Award Badge - FADE IN */}
+             <div className={`bg-theme-light/50 dark:bg-theme-dark/50 border border-theme-accent/20 p-6 rounded-xl flex items-center gap-4 backdrop-blur-sm shadow-xl relative overflow-hidden transition-all duration-1000 delay-700 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                <div className="absolute top-0 right-0 w-20 h-20 bg-theme-accent/5 rounded-full blur-2xl -mr-10 -mt-10"></div>
                <div className="w-12 h-12 rounded-full bg-theme-accent/10 flex items-center justify-center text-theme-accent shrink-0 border border-theme-accent/20">
                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
@@ -152,31 +152,30 @@ const About: React.FC = () => {
                </div>
              </div>
 
-             {/* Stats Grid */}
+             {/* Stats Grid - SEQUENTIAL ANIMATION */}
              <div className="grid grid-cols-2 gap-4">
-                <div className="p-5 bg-theme-light dark:bg-theme-dark rounded-xl border border-theme-accent/15 text-center hover:border-theme-accent/40 transition-colors">
-                  <p className="text-3xl font-bold text-theme-dark dark:text-theme-light mb-1">25+</p>
-                  <p className="text-[10px] text-theme-dark/50 dark:text-theme-light/50 uppercase tracking-wider font-bold">Years Experience</p>
-                </div>
-                <div className="p-5 bg-theme-light dark:bg-theme-dark rounded-xl border border-theme-accent/15 text-center hover:border-theme-accent/40 transition-colors">
-                  <p className="text-3xl font-bold text-theme-dark dark:text-theme-light mb-1">€16M</p>
-                  <p className="text-[10px] text-theme-dark/50 dark:text-theme-light/50 uppercase tracking-wider font-bold">Operating Income</p>
-                </div>
-                <div className="p-5 bg-theme-light dark:bg-theme-dark rounded-xl border border-theme-accent/15 text-center hover:border-theme-accent/40 transition-colors">
-                  <p className="text-3xl font-bold text-theme-dark dark:text-theme-light mb-1">90%</p>
-                  <p className="text-[10px] text-theme-dark/50 dark:text-theme-light/50 uppercase tracking-wider font-bold">Revenue Boost</p>
-                </div>
-                <div className="p-5 bg-theme-light dark:bg-theme-dark rounded-xl border border-theme-accent/15 text-center hover:border-theme-accent/40 transition-colors">
-                  <p className="text-3xl font-bold text-theme-dark dark:text-theme-light mb-1">1000+</p>
-                  <p className="text-[10px] text-theme-dark/50 dark:text-theme-light/50 uppercase tracking-wider font-bold">Professionals Led</p>
-                </div>
+                {[
+                  { val: "25+", label: "Years Experience" },
+                  { val: "€16M", label: "Operating Income" },
+                  { val: "90%", label: "Revenue Boost" },
+                  { val: "1000+", label: "Professionals Led" }
+                ].map((stat, idx) => (
+                  <div 
+                    key={idx}
+                    className={`p-5 bg-theme-light dark:bg-theme-dark rounded-xl border border-theme-accent/15 text-center hover:border-theme-accent/40 transition-all duration-700 ease-out transform hover:-translate-y-1 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                    style={{ transitionDelay: `${800 + (idx * 150)}ms` }}
+                  >
+                    <p className="text-3xl font-bold text-theme-dark dark:text-theme-light mb-1">{stat.val}</p>
+                    <p className="text-[10px] text-theme-dark/50 dark:text-theme-light/50 uppercase tracking-wider font-bold">{stat.label}</p>
+                  </div>
+                ))}
              </div>
 
           </div>
         </div>
 
         {/* Details Grid (Full Width below) */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 border-t border-theme-accent/15 pt-16">
+        <div className={`mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 border-t border-theme-accent/15 pt-16 transition-opacity duration-1000 delay-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
            
            {/* Education */}
            <div className="space-y-6">

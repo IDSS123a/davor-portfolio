@@ -9,7 +9,7 @@ import Testimonials from './components/Testimonials';
 import ChatAssistant from './components/ChatAssistant';
 import Portfolio from './components/Portfolio'; // New Import
 import CVRequestModal from './components/CVRequestModal';
-import { BOOKS, BOOK_SUBMISSION_URL, PROFILE } from './constants';
+import { BOOKS, BOOK_SUBMISSION_URL, PROFILE, AMAZON_AUTHOR_URL } from './constants';
 
 const App: React.FC = () => {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
@@ -58,8 +58,13 @@ const App: React.FC = () => {
                          ))}
                        </div>
                        
-                       <a href={book.id === 'b4' ? BOOK_SUBMISSION_URL : '#'} target="_blank" rel="noopener noreferrer" className="mt-auto w-full block text-center py-2 rounded border border-theme-accent/30 text-theme-dark dark:text-theme-light font-bold text-sm hover:bg-theme-accent hover:text-white transition-colors">
-                         {book.id === 'b4' ? 'View Workbook' : 'Buy on Amazon'}
+                       <a 
+                         href={book.id === 'b4' ? BOOK_SUBMISSION_URL : book.link} 
+                         target={book.id === 'b4' ? undefined : "_blank"}
+                         rel="noopener noreferrer" 
+                         className="mt-auto w-full block text-center py-2 rounded border border-theme-accent/30 text-theme-dark dark:text-theme-light font-bold text-sm hover:bg-theme-accent hover:text-white transition-colors"
+                       >
+                         {book.id === 'b4' ? 'Pre-order' : 'Buy on Amazon'}
                        </a>
                     </div>
                  </div>
@@ -67,7 +72,12 @@ const App: React.FC = () => {
             </div>
             
             <div className="mt-8 text-center">
-               <a href="#" className="text-theme-accent hover:underline text-sm font-medium flex items-center justify-center gap-2">
+               <a 
+                 href={AMAZON_AUTHOR_URL} 
+                 target="_blank" 
+                 rel="noopener noreferrer"
+                 className="text-theme-accent hover:underline text-sm font-medium flex items-center justify-center gap-2"
+               >
                  View All Books on Amazon
                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
                </a>

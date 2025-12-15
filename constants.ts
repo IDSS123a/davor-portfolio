@@ -1,10 +1,10 @@
 
-
 import { ExperienceItem, NavItem, VolunteeringItem, TestimonialItem, BookItem } from './types';
 
 export const CONSULTATION_URL = "https://davormulali.zohobookings.eu/#/253150000000046052";
-export const BOOK_SUBMISSION_URL = "https://ai-solved-problem.netlify.app/";
-export const AMAZON_AUTHOR_URL = "#"; 
+// Updated to mailto link with a subject line for easier processing
+export const BOOK_SUBMISSION_URL = "mailto:mulalic71@gmail.com?subject=Pre-order%20Inquiry%3A%20AI%20Solved%20Business%20Problems%20Workbook";
+export const AMAZON_AUTHOR_URL = "https://www.amazon.com/s?k=Davor+Mulali%C4%87&i=digital-text"; 
 
 export const PROFILE = {
   name: "Davor Mulalić",
@@ -220,7 +220,7 @@ export const BOOKS: BookItem[] = [
     subtitle: "Strategies for Growth and Productivity",
     description: "Applying AI strategies for business growth and personal productivity enhancement",
     tags: ["Business automation", "Personal productivity"],
-    link: "#",
+    link: "https://www.amazon.com/Business-Personal-Excellence-Davor-Mulali%C4%87-ebook/dp/B0DRHFHCTY/ref=sr_1_1?crid=1NAX4VASNESZ3&dib=eyJ2IjoiMSJ9.lXmhJpZE2h-YBFl3fstnY-ItCh2mbLC9pMIUwDezbnbGMP2tg560k9NyO1TzGzOGWMVMqwaQhksKihye-KHtjpj5A3czfEg3WVoEmU0Z8KibOrtYJO2ftzJKMedZswqQ9Bds1P6VaE_qZuKltslQOOfe2Ajx9kwgMEKccf1zTi4AvvsBmRoVTzh5TQIBv9yW.r4m1C7d6QAjTTIU9fBGfH-9ulMgWwJCP307m6-jTJyI&dib_tag=se&keywords=mulali%C4%87&qid=1765760629&s=digital-text&sprefix=mulali%2Cdigital-text%2C326&sr=1-1-catcorr",
     isNew: true
   },
   {
@@ -229,7 +229,7 @@ export const BOOKS: BookItem[] = [
     subtitle: "Integrating Artificial Intelligence in Your Classroom",
     description: "Practical guide for educators to effectively integrate AI tools into daily teaching practice",
     tags: ["AI tools for teachers", "Lesson planning with AI"],
-    link: "#",
+    link: "https://www.amazon.com/dp/B0DRTF8BBW",
     isNew: true
   },
   {
@@ -238,13 +238,13 @@ export const BOOKS: BookItem[] = [
     subtitle: "A Practical Manual for Advanced Non-Coders",
     description: "Comprehensive guide to prompt engineering for educators and professionals without coding background",
     tags: ["Prompting techniques", "Educational applications"],
-    link: "#",
+    link: "https://www.amazon.com/Mastering-Prompt-Engineering-practical-non-coders-ebook/dp/B0F4BJS4PT/ref=sr_1_1?crid=1NAX4VASNESZ3&dib=eyJ2IjoiMSJ9.5M-Nr2aR0RFzxd3mtH3Mzg.qBpT6l774LuP4e30tJrMU03SQaJAG7DCyhS1KezLrcQ&dib_tag=se&keywords=mulali%C4%87&qid=1765760629&s=digital-text&sprefix=mulali%2Cdigital-text%2C326&sr=1-1",
     isNew: true
   },
   {
     id: 'b4',
     title: "AI Solved Business Problems",
-    subtitle: "A Manager's Workbook",
+    subtitle: "A Manager's Workbook (In Preparation)",
     description: "Practical workbook for managers to solve real business challenges using AI",
     tags: ["Problem solving", "Management"],
     link: "#",

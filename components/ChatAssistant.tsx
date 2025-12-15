@@ -108,15 +108,23 @@ const ChatAssistant: React.FC = () => {
     text: `Hello! I'm Davor's AI assistant. Ask me anything about his leadership style, experience in AI, or his new workbook on AI Business Problems.` 
   };
 
-  // State initialization with localStorage to persist chat history
+  // State initialization with localStorage to persist chat history (With Robust Error Handling)
   const [messages, setMessages] = useState<ChatMessage[]>(() => {
     try {
       if (typeof window !== 'undefined') {
         const savedMessages = localStorage.getItem(STORAGE_KEY);
-        return savedMessages ? JSON.parse(savedMessages) : [initialMessage];
+        if (savedMessages) {
+            try {
+                return JSON.parse(savedMessages);
+            } catch (jsonError) {
+                console.warn("Failed to parse chat history, resetting.", jsonError);
+                return [initialMessage];
+            }
+        }
       }
       return [initialMessage];
     } catch (e) {
+      console.error("Storage access error:", e);
       return [initialMessage];
     }
   });
@@ -133,7 +141,11 @@ const ChatAssistant: React.FC = () => {
 
   // Persist messages to local storage whenever they change
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
+    } catch (e) {
+        console.warn("Failed to save chat history", e);
+    }
   }, [messages]);
 
   const generateId = () => Math.random().toString(36).substr(2, 9) + Date.now().toString(36);

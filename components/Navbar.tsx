@@ -14,6 +14,18 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Body scroll locking when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [mobileMenuOpen]);
+
   // Smooth scroll handler to prevent routing crashes
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -82,7 +94,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-theme-light/95 dark:bg-theme-dark/95 backdrop-blur-md z-40 flex flex-col items-center justify-center space-y-8 lg:hidden">
+        <div className="fixed inset-0 bg-theme-light/95 dark:bg-theme-dark/95 backdrop-blur-md z-40 flex flex-col items-center justify-center space-y-8 lg:hidden animate-fade-in-up">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
