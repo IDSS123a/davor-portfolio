@@ -6,16 +6,15 @@ export default defineConfig({
   plugins: [react()],
   // 'base' must be '/' because you are using a custom domain at the root (ai-studio.wiki)
   base: '/', 
+  define: {
+    // Prevents "process is not defined" error in browser
+    'process.env': {}
+  },
   build: {
+    // Bundle everything to ensure stability. No external dependencies.
     rollupOptions: {
-      external: ['react', 'react-dom', 'react-dom/client', '@google/genai'],
       output: {
-        format: 'es',
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          '@google/genai': 'GoogleGenAI'
-        }
+        format: 'es'
       }
     }
   }
