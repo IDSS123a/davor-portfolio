@@ -24,7 +24,7 @@
     <meta property="twitter:description" content="Executive Leader bridging traditional leadership with AI-powered solutions." />
     <meta property="twitter:image" content="https://i.postimg.cc/ryPH99VS/Davor_Mulali-B-1.png" />
 
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS (CDN is acceptable for this setup) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Fonts -->
@@ -64,27 +64,13 @@
     </script>
     
     <style>
-      /* Custom scrollbar for webkit */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #373833; 
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #035EA1; 
-        border-radius: 4px;
-        opacity: 0.5;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #035EA1; 
-      }
-      
-      body {
-        background-color: #373833; /* Fallback */
-      }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #373833; }
+      ::-webkit-scrollbar-thumb { background: #035EA1; border-radius: 4px; opacity: 0.5; }
+      ::-webkit-scrollbar-thumb:hover { background: #035EA1; }
+      body { background-color: #373833; }
     </style>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
     "react": "https://esm.sh/react@^19.2.3",
@@ -99,6 +85,7 @@
 </head>
   <body class="bg-theme-light dark:bg-theme-dark text-theme-dark dark:text-theme-light antialiased selection:bg-theme-accent selection:text-white transition-colors duration-300">
     <div id="root"></div>
+    <!-- Vite treats this as the entry point -->
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
