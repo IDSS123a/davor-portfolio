@@ -4,10 +4,9 @@ import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // Ensure base is root for custom domain
   base: '/', 
   define: {
-    // This prevents "process is not defined" error in browser
+    // CRITICAL: This polyfills process.env so the app doesn't crash when accessing API_KEY
     'process.env': {}
   },
   build: {
