@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO & Metatags -->
+    <title>Davor Mulalić | Executive Leader & AI Business Strategist</title>
+    <meta name="description" content="Executive Leader and expert in AI Strategy and Digital Transformation with over 25 years of experience driving growth, innovation, and operational excellence." />
+    <meta name="keywords" content="AI Strategy, CEO, Digital Transformation, Business Leadership, Davor Mulalić, Sarajevo, Education Management" />
+    <meta name="author" content="Davor Mulalić" />
+    <meta name="theme-color" content="#373833" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://davormulalic.com/" />
+    <meta property="og:title" content="Davor Mulalić | AI Education Leader" />
+    <meta property="og:description" content="Turning strategic vision into tangible business outcomes while fostering human-centered, future-ready leadership." />
+    <meta property="og:image" content="https://i.postimg.cc/ryPH99VS/Davor_Mulali-B-1.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Davor Mulalić | AI Education Leader" />
+    <meta property="twitter:description" content="Executive Leader bridging traditional leadership with AI-powered solutions." />
+    <meta property="twitter:image" content="https://i.postimg.cc/ryPH99VS/Davor_Mulali-B-1.png" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+      tailwind.config = {
+        darkMode: 'media',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+            },
+            colors: {
+              theme: {
+                light: '#e8eae3',
+                dark: '#373833',
+                accent: '#035EA1',
+              }
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.3s ease-out forwards',
+              'spin-slow': 'spin 10s linear infinite',
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(10px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #373833; }
+      ::-webkit-scrollbar-thumb { background: #035EA1; border-radius: 4px; opacity: 0.5; }
+      ::-webkit-scrollbar-thumb:hover { background: #035EA1; }
+      body { background-color: #373833; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "vite": "https://esm.sh/vite@^7.3.0",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+</head>
+  <body class="bg-theme-light dark:bg-theme-dark text-theme-dark dark:text-theme-light antialiased selection:bg-theme-accent selection:text-white transition-colors duration-300">
+    <div id="root"></div>
+    <!-- Vite treats this as the entry point -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
