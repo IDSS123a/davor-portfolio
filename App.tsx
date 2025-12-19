@@ -1,26 +1,67 @@
-
-import React, { useState } from 'react';
+import React, { useState, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
-import Volunteering from './components/Volunteering';
-import Testimonials from './components/Testimonials';
 import ChatAssistant from './components/ChatAssistant';
-import Portfolio from './components/Portfolio'; // New Import
 import CVRequestModal from './components/CVRequestModal';
 import { BOOKS, BOOK_SUBMISSION_URL, PROFILE, AMAZON_AUTHOR_URL } from './constants';
 
+// Lazy load non-critical sections
+const Portfolio = lazy(() => import('./components/Portfolio'));
+const Volunteering = lazy(() => import('./components/Volunteering'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+
+const SectionLoader = () => (
+  <div className="py-24 flex items-center justify-center bg-theme-light dark:bg-theme-dark">
+    <div className="w-8 h-8 border-4 border-theme-accent/20 border-t-theme-accent rounded-full animate-spin"></div>
+  </div>
+);
+
 const App: React.FC = () => {
   const [isCVModalOpen, setIsCVModalOpen] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [contactData, setContactData] = useState({
+    name: '',
+    email: '',
+    organization: '',
+    interest: 'Select an option',
+    message: ''
+  });
 
-  // Helper for smooth scrolling from Footer
   const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!contactData.name || !contactData.email || !contactData.message) {
+      alert("Please fill in all required fields (Name, Email, and Message).");
+      return;
+    }
+
+    const subject = `Portfolio Inquiry: ${contactData.interest} from ${contactData.name}`;
+    const body = `Name: ${contactData.name}%0D%0AEmail: ${contactData.email}%0D%0AOrganization: ${contactData.organization}%0D%0AInterest: ${contactData.interest}%0D%0A%0D%0AMessage:%0D%0A${contactData.message}`;
+    
+    // Open email client
+    window.location.href = `mailto:${PROFILE.socials.email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    
+    setFormSubmitted(true);
+    // Reset form after a delay
+    setTimeout(() => {
+      setFormSubmitted(false);
+      setContactData({
+        name: '',
+        email: '',
+        organization: '',
+        interest: 'Select an option',
+        message: ''
+      });
+    }, 5000);
   };
 
   return (
@@ -85,12 +126,17 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* New Portfolio Section */}
-        <Portfolio />
+        <Suspense fallback={<SectionLoader />}>
+          <Portfolio />
+        </Suspense>
 
-        <Volunteering />
+        <Suspense fallback={<SectionLoader />}>
+          <Volunteering />
+        </Suspense>
         
-        <Testimonials />
+        <Suspense fallback={<SectionLoader />}>
+          <Testimonials />
+        </Suspense>
         
         {/* Contact Section */}
         <section id="contact" className="py-24 bg-theme-light dark:bg-theme-dark border-t border-theme-accent/15 px-6">
@@ -149,39 +195,88 @@ const App: React.FC = () => {
               </div>
 
               {/* Form */}
-              <div className="bg-theme-light dark:bg-theme-dark border border-theme-accent/15 p-8 rounded-2xl shadow-xl">
-                 <h3 className="text-xl font-bold text-theme-dark dark:text-theme-light mb-6">Send a Message</h3>
-                 <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                    <div>
-                       <label className="block text-theme-dark/50 dark:text-theme-light/50 text-xs font-bold uppercase mb-2">Name *</label>
-                       <input type="text" placeholder="Your name" className="w-full bg-transparent border border-theme-accent/30 rounded-lg px-4 py-3 text-theme-dark dark:text-theme-light focus:outline-none focus:ring-1 focus:ring-theme-accent transition-colors" />
-                    </div>
-                    <div>
-                       <label className="block text-theme-dark/50 dark:text-theme-light/50 text-xs font-bold uppercase mb-2">Email *</label>
-                       <input type="email" placeholder="your@email.com" className="w-full bg-transparent border border-theme-accent/30 rounded-lg px-4 py-3 text-theme-dark dark:text-theme-light focus:outline-none focus:ring-1 focus:ring-theme-accent transition-colors" />
-                    </div>
-                    <div>
-                       <label className="block text-theme-dark/50 dark:text-theme-light/50 text-xs font-bold uppercase mb-2">Organization</label>
-                       <input type="text" placeholder="Company or institution" className="w-full bg-transparent border border-theme-accent/30 rounded-lg px-4 py-3 text-theme-dark dark:text-theme-light focus:outline-none focus:ring-1 focus:ring-theme-accent transition-colors" />
-                    </div>
-                    <div>
-                       <label className="block text-theme-dark/50 dark:text-theme-light/50 text-xs font-bold uppercase mb-2">Area of Interest</label>
-                       <select className="w-full bg-transparent border border-theme-accent/30 rounded-lg px-4 py-3 text-theme-dark dark:text-theme-light focus:outline-none focus:ring-1 focus:ring-theme-accent transition-colors">
-                          <option>Select an option</option>
-                          <option>Executive Advisory</option>
-                          <option>AI Strategy Consulting</option>
-                          <option>Speaking Engagement</option>
-                          <option>Other</option>
-                       </select>
-                    </div>
-                    <div>
-                       <label className="block text-theme-dark/50 dark:text-theme-light/50 text-xs font-bold uppercase mb-2">Message *</label>
-                       <textarea rows={4} placeholder="Tell me about your project or inquiry..." className="w-full bg-transparent border border-theme-accent/30 rounded-lg px-4 py-3 text-theme-dark dark:text-theme-light focus:outline-none focus:ring-1 focus:ring-theme-accent transition-colors"></textarea>
-                    </div>
-                    <button className="w-full bg-theme-accent hover:bg-theme-accent/90 text-white font-bold py-4 rounded-lg shadow-lg shadow-theme-accent/20 transition-all hover:-translate-y-1">
-                       Send Message
-                    </button>
-                 </form>
+              <div className="bg-theme-light dark:bg-theme-dark border border-theme-accent/15 p-8 rounded-2xl shadow-xl relative overflow-hidden">
+                 {formSubmitted ? (
+                   <div className="h-full flex flex-col items-center justify-center text-center space-y-4 animate-fade-in-up py-12">
+                      <div className="w-16 h-16 bg-green-500/20 text-green-500 rounded-full flex items-center justify-center">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </div>
+                      <h3 className="text-2xl font-bold text-theme-dark dark:text-theme-light">Message Prepared!</h3>
+                      <p className="text-theme-dark/70 dark:text-theme-light/70">Please check your email client to send the message. I will get back to you shortly.</p>
+                      <button 
+                        onClick={() => setFormSubmitted(false)}
+                        className="text-theme-accent font-bold text-sm hover:underline"
+                      >
+                        Send another message
+                      </button>
+                   </div>
+                 ) : (
+                   <>
+                    <h3 className="text-xl font-bold text-theme-dark dark:text-theme-light mb-6">Send a Message</h3>
+                    <form className="space-y-4" onSubmit={handleContactSubmit}>
+                        <div>
+                          <label className="block text-theme-dark/50 dark:text-theme-light/50 text-xs font-bold uppercase mb-2">Name *</label>
+                          <input 
+                            type="text" 
+                            required
+                            placeholder="Your name" 
+                            value={contactData.name}
+                            onChange={(e) => setContactData({...contactData, name: e.target.value})}
+                            className="w-full bg-transparent border border-theme-accent/30 rounded-lg px-4 py-3 text-theme-dark dark:text-theme-light focus:outline-none focus:ring-1 focus:ring-theme-accent transition-colors" 
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-theme-dark/50 dark:text-theme-light/50 text-xs font-bold uppercase mb-2">Email *</label>
+                          <input 
+                            type="email" 
+                            required
+                            placeholder="your@email.com" 
+                            value={contactData.email}
+                            onChange={(e) => setContactData({...contactData, email: e.target.value})}
+                            className="w-full bg-transparent border border-theme-accent/30 rounded-lg px-4 py-3 text-theme-dark dark:text-theme-light focus:outline-none focus:ring-1 focus:ring-theme-accent transition-colors" 
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-theme-dark/50 dark:text-theme-light/50 text-xs font-bold uppercase mb-2">Organization</label>
+                          <input 
+                            type="text" 
+                            placeholder="Company or institution" 
+                            value={contactData.organization}
+                            onChange={(e) => setContactData({...contactData, organization: e.target.value})}
+                            className="w-full bg-transparent border border-theme-accent/30 rounded-lg px-4 py-3 text-theme-dark dark:text-theme-light focus:outline-none focus:ring-1 focus:ring-theme-accent transition-colors" 
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-theme-dark/50 dark:text-theme-light/50 text-xs font-bold uppercase mb-2">Area of Interest</label>
+                          <select 
+                            value={contactData.interest}
+                            onChange={(e) => setContactData({...contactData, interest: e.target.value})}
+                            className="w-full bg-transparent border border-theme-accent/30 rounded-lg px-4 py-3 text-theme-dark dark:text-theme-light focus:outline-none focus:ring-1 focus:ring-theme-accent transition-colors"
+                          >
+                              <option>Select an option</option>
+                              <option>Executive Advisory</option>
+                              <option>AI Strategy Consulting</option>
+                              <option>Speaking Engagement</option>
+                              <option>Other</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="block text-theme-dark/50 dark:text-theme-light/50 text-xs font-bold uppercase mb-2">Message *</label>
+                          <textarea 
+                            rows={4} 
+                            required
+                            placeholder="Tell me about your project or inquiry..." 
+                            value={contactData.message}
+                            onChange={(e) => setContactData({...contactData, message: e.target.value})}
+                            className="w-full bg-transparent border border-theme-accent/30 rounded-lg px-4 py-3 text-theme-dark dark:text-theme-light focus:outline-none focus:ring-1 focus:ring-theme-accent transition-colors"
+                          ></textarea>
+                        </div>
+                        <button className="w-full bg-theme-accent hover:bg-theme-accent/90 text-white font-bold py-4 rounded-lg shadow-lg shadow-theme-accent/20 transition-all hover:-translate-y-1">
+                          Send Message
+                        </button>
+                    </form>
+                   </>
+                 )}
               </div>
 
            </div>

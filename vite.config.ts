@@ -1,18 +1,23 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  // CRITICAL: Use './' instead of '/' so assets load correctly regardless of subdirectory/domain
-  base: './', 
+  base: '/', 
   define: {
-    // CRITICAL: This prevents the "process is not defined" crash in the browser
-    'process.env': {}
+    'process.env.API_KEY': JSON.stringify(process.env.API_KEY || '')
   },
   build: {
     outDir: 'dist',
     emptyOutDir: true,
-    target: 'esnext'
+    target: 'esnext',
+    sourcemap: false,
+    chunkSizeWarningLimit: 3000,
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (warning.code === 'MODULE_LEVEL_DIRECTIVE') return;
+        warn(warning);
+      }
+    }
   }
 });

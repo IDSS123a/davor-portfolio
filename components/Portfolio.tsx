@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo, useEffect } from 'react';
 import { PORTFOLIO_APPS, PORTFOLIO_PROMPTS, PORTFOLIO_CASE_STUDIES } from '../data/portfolioData';
 import { PortfolioItem } from '../types';
@@ -17,8 +16,8 @@ const Portfolio: React.FC = () => {
 
   const data = activeTab === 'apps' ? PORTFOLIO_APPS : activeTab === 'prompts' ? PORTFOLIO_PROMPTS : PORTFOLIO_CASE_STUDIES;
 
-  const industries = ['All', ...Array.from(new Set(data.map(item => item.industry))).sort()];
-  const technologies = ['All', ...Array.from(new Set(data.flatMap(item => item.technologies))).sort()];
+  const industries = useMemo(() => ['All', ...Array.from(new Set(data.map(item => item.industry))).sort()], [data]);
+  const technologies = useMemo(() => ['All', ...Array.from(new Set(data.flatMap(item => item.technologies))).sort()], [data]);
 
   // Reset pagination when filters change or tab changes
   useEffect(() => {
@@ -157,9 +156,15 @@ const Portfolio: React.FC = () => {
                className="group bg-theme-light dark:bg-theme-dark border border-theme-accent/15 rounded-2xl overflow-hidden hover:border-theme-accent/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-theme-accent/10 cursor-pointer flex flex-col h-full outline-none focus:ring-2 focus:ring-theme-accent"
              >
                 {/* Image Area */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 overflow-hidden bg-theme-dark/10">
                    <div className="absolute inset-0 bg-gradient-to-t from-theme-dark/80 to-transparent z-10"></div>
-                   <img src={item.imageUrl} alt={item.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                   <img 
+                     src={item.imageUrl} 
+                     alt={item.title} 
+                     loading="lazy"
+                     decoding="async"
+                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
+                   />
                    
                    {/* Badges */}
                    <div className="absolute top-4 left-4 z-20">
